@@ -1,0 +1,14 @@
+services:
+    # Builder
+    kryptopus_candlestick_storage_elasticsearch_builder:
+        class: "domain/StorageBuilder"
+        tags:
+            - { name: kryptopus.candlestick_storage_builder, builder_id: elasticsearch }
+
+    # Command to test elasticsearch connection
+    kryptopus_command_test_storage_elasticsearch_connection:
+        class: "application/command/TestConnectionCommand"
+        tags:
+            - { name: "solfege.console.command" }
+
+
