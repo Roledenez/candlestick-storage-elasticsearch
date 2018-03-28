@@ -1,5 +1,7 @@
 /* @flow */
 import type {CommandInterface} from "solfegejs-cli/interface"
+import type StorageBuilder from "../../domain/StorageBuilder"
+import type ElasticsearchStorage from "../../domain/ElasticsearchStorage"
 
 /**
  * Test connection
@@ -7,10 +9,18 @@ import type {CommandInterface} from "solfegejs-cli/interface"
 export default class TestConnectionCommand implements CommandInterface
 {
     /**
-     * Constructor
+     * Storage builder
      */
-    constructor()
+    builder:StorageBuilder;
+
+    /**
+     * Constructor
+     *
+     * @param   {StorageBuilder}    builder     Storage builder
+     */
+    constructor(builder:StorageBuilder)
     {
+        this.builder = builder;
     }
 
     /**
@@ -47,5 +57,13 @@ export default class TestConnectionCommand implements CommandInterface
      */
     async execute(parameters:Array<string>)
     {
+        const host:string = parameters.shift();
+
+        const storage:ElasticsearchStorage = this.builder.buildFromSerializedConfiguration({
+            host: host
+        });
+
+        const infos = await storage.getClusterInformations();
+        console.log(infos);
     }
 }

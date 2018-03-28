@@ -14,14 +14,15 @@
         "node": ">= 9"
     },
     "dependencies": {
+        "decko": "^1.2.0",
+        "elasticsearch": "^14.2.1",
         "kryptopus-candlestick": "^1.0.0",
         "kryptopus-candlestick-storage": "^1.0.0",
-        "decko": "^1.2.0",
         "solfegejs-cli": "^4.0.2"
     },
     "devDependencies": {
         "babel-cli": "^6.7",
-        "babel-preset-solfege": "^1.1.2",
+        "babel-preset-solfege": "^1.2.2",
         "eslint": "^3.19",
         "eslint-plugin-solfege": "^1.0",
         "flow-bin": "^0.60.1",
@@ -35,11 +36,12 @@
         "flow-restart": "flow stop && flow start",
         "lint": "eslint --ext .js src",
         "prepare": "npm run lint && npm run build",
-        "prebuild": "npm run lint && npm run flow-restart && flow",
+        "prebuild": "npm run lint && flow",
+        "postbuild": "echo \"---------- READY ---------\"",
         "build": "babel --out-dir lib src --copy-files",
-        "watch": "watch 'echo \"----------\"; npm run build --silent' ./src",
+        "watch": "watch 'echo \"----- START BUILDING -----\"; npm run build --silent' ./src",
         "example-build": "flow; babel --out-dir example/lib example/src --copy-files",
-        "example-console": "node --harmony  example/lib/console.js"
+        "example-console": "node example/lib/console.js"
     },
     "babel": {
         "presets": [

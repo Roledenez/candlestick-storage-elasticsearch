@@ -8,6 +8,8 @@ services:
     # Command to test elasticsearch connection
     kryptopus_command_test_storage_elasticsearch_connection:
         class: "application/command/TestConnectionCommand"
+        arguments:
+            - "@kryptopus_candlestick_storage_elasticsearch_builder"
         tags:
             - { name: "solfege.console.command" }
 
