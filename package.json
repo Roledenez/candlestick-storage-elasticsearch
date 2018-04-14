@@ -16,8 +16,8 @@
     "dependencies": {
         "decko": "^1.2.0",
         "elasticsearch": "^14.2.1",
-        "kryptopus-candlestick": "^1.0.0",
-        "kryptopus-candlestick-storage": "^1.0.0",
+        "kryptopus-candlestick": "^1.0.1",
+        "kryptopus-candlestick-storage": "^1.1.1",
         "solfegejs-cli": "^4.0.2"
     },
     "devDependencies": {

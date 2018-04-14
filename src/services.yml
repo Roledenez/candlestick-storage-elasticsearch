@@ -14,3 +14,20 @@ services:
             - { name: "solfege.console.command" }
 
 
+    # Command to save a candle
+    kryptopus_command_save_candle_on_elasticsearch:
+        class: "application/command/SaveCandleCommand"
+        arguments:
+            - "@kryptopus_candlestick_storage_elasticsearch_builder"
+        tags:
+            - { name: "solfege.console.command" }
+
+    # Command to get candles in period
+    kryptopus_command_get_candles_in_period_on_elasticsearch:
+        class: "application/command/GetInPeriodCommand"
+        arguments:
+            - "@kryptopus_candlestick_storage_elasticsearch_builder"
+        tags:
+            - { name: "solfege.console.command" }
+
+
